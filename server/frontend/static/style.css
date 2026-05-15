@@ -124,3 +124,23 @@ img{
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
 }
+#content{
+    float: right;
+    height: auto;
+    width:60%;
+    border: solid 5px lightblue;
+    border-radius: 20px;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.content{
+    float: left;
+    padding: 5%;
+    margin:4%
+}
+#image-auto{
+    max-width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
