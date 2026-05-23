@@ -14,8 +14,8 @@ urlpatterns = [
     path("get_cars", views.get_cars, name="get_cars"),
 
     # DEALERSHIPS
-    path("get_dealerships", views.get_dealerships, name="get_dealerships"),
-    path("get_dealerships/<str:state>", views.get_dealerships, name="get_dealerships_by_state"),
+   path(route='get_dealers/', view=views.get_dealerships, name='get_dealers'),
+    path(route='get_dealers/<str:state>', view=views.get_dealerships, name='get_dealers_by_state'),
 
     # DEALER DETAILS + REVIEWS
     path("dealer/<int:dealer_id>", views.get_dealer_details, name="dealer_details"),
@@ -23,4 +23,6 @@ urlpatterns = [
 
     # ADD REVIEW
     path("add_review", views.add_review, name="add_review"),
+        path(route='reviews/dealer/<int:dealer_id>', view=views.get_dealer_reviews, name='dealer_details'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
