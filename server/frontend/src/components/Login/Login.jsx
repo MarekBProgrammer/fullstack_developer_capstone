@@ -9,31 +9,33 @@ const Login = ({ onClose }) => {
   const [password, setPassword] = useState("");
   const [open,setOpen] = useState(true)
 
-  let login_url = window.location.origin+"/djangoapp/login";
+  let login_url = window.location.origin+"/djangoapp/login_user";
 
   const login = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const res = await fetch(login_url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            "userName": userName,
-            "password": password
-        }),
-    });
-    
-    const json = await res.json();
-    if (json.status != null && json.status === "Authenticated") {
-        sessionStorage.setItem('username', json.userName);
-        setOpen(false);        
-    }
-    else {
-      alert("The user could not be authenticated.")
-    }
+  const res = await fetch(login_url, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+          "userName": userName,
+          "password": password
+      }),
+  });
+  
+  const json = await res.json();
+  if (json.status != null && json.status === "Authenticated") {
+      sessionStorage.setItem('username', json.userName);
+      window.location.href = "/";   // ← TU PRZEKIEROWUJEMY
+  }
+  else {
+    alert("The user could not be authenticated.")
+  }
 };
+
 
   if (!open) {
     window.location.href = "/";
